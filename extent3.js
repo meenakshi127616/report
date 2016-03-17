@@ -12065,10 +12065,6 @@ function refreshData() {
     $('#dashboard-view .determinate').attr('style', 'width:' + percentage);
 */
     
-    var percentage = Math.round((passedSteps * 100) / (passedSteps + failedSteps + fatalSteps + warningSteps + errorSteps + unknownSteps + skippedSteps)) + '%';
-    $('.pass-percentage.panel-lead').text(percentage);
-    $('#dashboard-view .determinate').attr('style', 'width:' + percentage);
-    
     totalSteps = $('#test-collection .test.displayed > .test-body > .test-steps > table td.status, #test-collection .test.displayed .node-list > li.displayed td.status').length;
     passedSteps = $('#test-collection .test.displayed > .test-body > .test-steps > table td.status.pass, #test-collection .test.displayed .node-list > li.displayed td.status.pass').length;
     failedSteps = $('#test-collection .test.displayed > .test-body > .test-steps > table td.status.fail, #test-collection .test.displayed .node-list > li.displayed td.status.fail').length;
@@ -12079,6 +12075,20 @@ function refreshData() {
     skippedSteps = $('#test-collection .test.displayed > .test-body > .test-steps > table td.status.skip, #test-collection .test.displayed .node-list > li.displayed td.status.skip').length;
     unknownSteps = $('#test-collection .test.displayed > .test-body > .test-steps > table td.status.unknown, #test-collection .test.displayed .node-list > li.displayed td.status.unknown').length;
 
+    var percentage = Math.round((passedSteps * 100) / (passedSteps + failedSteps + fatalSteps + warningSteps + errorSteps + unknownSteps + skippedSteps)) + '%';
+    console.log("passed value is: " + passedSteps);
+    console.log("failed value is: " + failedSteps);
+    console.log("fatal value is: " + fatalSteps);
+    console.log("warning value is: " + warningSteps);
+    console.log("error value is: " + errorSteps);
+    console.log("unknown value is: " + unknownSteps);
+    console.log("skipped value is: " + skippedSteps);
+    console.log("percentage value is: " + percentage);
+    
+    
+    $('.pass-percentage.panel-lead').text(percentage);
+    $('#dashboard-view .determinate').attr('style', 'width:' + percentage);
+    
     if ($('#step-status-filter').hasClass('pass')) {
         passedSteps = 0;
     }

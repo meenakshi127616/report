@@ -327,7 +327,7 @@
 																<th>${resourceBundle.getString("tests.test.log.th.status")}</th>
 																<th>${resourceBundle.getString("tests.test.log.th.timestamp")}</th>
 																<#if (test.logList[0].stepName)??>
-																	<th>StepName</th>
+																	<th>Expected Result</th>
 																</#if>
 																<th>${resourceBundle.getString("tests.test.log.th.details")}</th>
 															</tr>
@@ -371,7 +371,7 @@
 																							<th>${resourceBundle.getString("tests.test.log.th.status")}</th>
 																							<th>${resourceBundle.getString("tests.test.log.th.timestamp")}</th>
 																							<#if (node.logList[0].stepName)??>
-																								<th>StepName</th>
+																								<th>Expected Result</th>
 																							</#if>
 																							<th>${resourceBundle.getString("tests.test.log.th.details")}</th>
 																						</tr>
@@ -656,18 +656,16 @@
 		
 	
 	
-	//	 <script src='${protocol}://github.com/varunmalik82/report/blob/master/extent3.js' type='text/javascript' ></script>
+	<script src='C:\Users\msingh\Downloads\extentreports-master\extentreports-master\java\extentreports\src\main\java\com\relevantcodes\extentreports\view\offline\js\extent3.js' type='text/javascript' >
+	
+	<script>$(document).ready(function() { $('.logo span').html('ExtentReports');  });</script>
+	<script>
+		<#if report.configurationMap??>
+			${report.configurationMap["scripts"]}
+		</#if>
 	
 	
-	<script src='${protocol}://rawgit.com/varunmalik82/report/master/extent3.js' type='text/javascript' >
-	$(document).ready(function() { $('.logo span').html('ExtentReports');  });
-	
-	
-	
-	
-			<#if report.configurationMap??>
-				${report.configurationMap["scripts"]}
-			</#if>
+			
 			
 			
 			/* update data for dashboard [DASHBOARD] */

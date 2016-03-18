@@ -11824,6 +11824,8 @@ $('#test-details-wrapper').click(function(evt) {
 $('#tests-toggle li').click(function() {
     if ($(this).hasClass('clear')) {
         resetFilters();
+      //   redrawCharts();
+
         return;
     }
 
@@ -11850,6 +11852,7 @@ $('#tests-toggle li').click(function() {
 $('#category-toggle li').click(function() {
     if ($(this).hasClass('clear')) {
         resetFilters();
+        //redrawCharts();
         return;
     }
 
@@ -11874,6 +11877,8 @@ $('#category-toggle li').click(function() {
 /* clear filters button */
 $('#clear-filters').click(function() {
     resetFilters();
+    // redrawCharts();
+
 });
 
 $(document).ready(function() {
@@ -11962,7 +11967,14 @@ function redrawCharts() {
     }
 
     refreshData();
-
+    
+    //add trial 3lines //correct popup correct value
+    var percentage = Math.round((passedSteps * 100) / (passedSteps + failedSteps + fatalSteps + warningSteps + errorSteps + unknownSteps + skippedSteps)) + '%';
+    $('.pass-percentage.panel-lead').text(percentage);
+    $('#dashboard-view .determinate').attr('style', 'width:' + percentage);
+    
+    
+    
     if ($('#dashboard-view').hasClass('hide')) {
         return;
     }
@@ -12077,15 +12089,16 @@ function refreshData() {
 
     var percentage = Math.round((passedSteps * 100) / (passedSteps + failedSteps + fatalSteps + warningSteps + errorSteps + unknownSteps + skippedSteps)) + '%';
     console.log("passed value is: " + passedSteps);
-    console.log("failed value is: " + failedSteps);
-    console.log("fatal value is: " + fatalSteps);
-    console.log("warning value is: " + warningSteps);
-    console.log("error value is: " + errorSteps);
-    console.log("unknown value is: " + unknownSteps);
-    console.log("skipped value is: " + skippedSteps);
-    console.log("percentage value is: " + percentage);
+   // console.log("failed value is: " + failedSteps);
+    //console.log("fatal value is: " + fatalSteps);
+    //console.log("warning value is: " + warningSteps);
+    //console.log("error value is: " + errorSteps);
+    //console.log("unknown value is: " + unknownSteps);
+    //console.log("skipped value is: " + skippedSteps);
+    //console.log("percentage value is: " + percentage);
     
-    
+  //  redrawCharts();//changed trial//error Uncaught RangeError: Maximum call stack size exceeded
+   
     $('.pass-percentage.panel-lead').text(percentage);
     $('#dashboard-view .determinate').attr('style', 'width:' + percentage);
     
